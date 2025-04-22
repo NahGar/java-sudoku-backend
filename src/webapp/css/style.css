@@ -1,0 +1,147 @@
+body {
+  font-family: sans-serif;
+  text-align: center;
+  margin: 20px;
+}
+
+#sudoku-board {
+  margin: 20px auto;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+#sudoku-board td {
+  border: 1px solid #666;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-size: 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Bordes gruesos para bloques 3x3 */
+#sudoku-board tr:nth-child(3n) td {
+  border-bottom: 3px solid #000;
+}
+
+#sudoku-board tr:nth-child(1) td {
+  border-top: 3px solid #000;
+}
+
+#sudoku-board td:nth-child(3n) {
+  border-right: 3px solid #000;
+}
+
+#sudoku-board td:nth-child(1) {
+  border-left: 3px solid #000;
+}
+
+/* Estilos para celdas */
+td.prefilled {
+  background-color: #f0f0f0;
+  font-weight: bold;
+  color: #333;
+}
+
+td:not(.prefilled)[data-value]:not([data-value=""]) {
+  color: red;
+}
+
+td.selected {
+  background-color: #cce5ff !important;
+  outline: 2px solid #0066cc;
+}
+
+/* Resaltados */
+.highlighted {
+  background-color: #e6f2ff;
+}
+
+.highlighted-block {
+  background-color: #cce0ff;
+}
+
+.same-number {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { background-color: #ffebee; }
+  50% { background-color: #ffcdd2; }
+  100% { background-color: #ffebee; }
+}
+
+/* Controles */
+.controls {
+  margin: 20px auto;
+  padding: 10px;
+  max-width: 400px;
+}
+
+.controls button {
+  font-size: 18px;
+  margin: 5px;
+  padding: 8px 15px;
+  min-width: 40px;
+  cursor: pointer;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: #f8f8f8;
+}
+
+.controls button:hover {
+  background-color: #e8e8e8;
+}
+
+.controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #e0e0e0;
+}
+
+/* Panel de información */
+.game-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto 20px;
+  max-width: 600px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.difficulty {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.difficulty select, .difficulty button {
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.stats {
+  display: flex;
+  gap: 20px;
+  font-weight: bold;
+}
+
+.stats div {
+  padding: 8px 12px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#time {
+  color: #0066cc;
+}
+
+#attempts {
+  color: #cc0000;
+}
