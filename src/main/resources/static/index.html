@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Diario</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="game-container">
+    <h1>Sudoku Diario</h1>
+
+    <div id="difficulty-selector" class="difficulty-selector">
+        <h2>Selecciona dificultad:</h2>
+        <select id="difficulty">
+            <option value="" selected></option>
+            <option value="easy">Fácil</option>
+            <option value="medium">Medio</option>
+            <option value="hard">Difícil</option>
+        </select>
+    </div>
+
+    <div id="game-content" style="display: none;">
+        <div class="game-info">
+            <div class="stats">
+                <div>Tiempo: <span id="time">00:00</span></div>
+                <div>Intentos: <span id="attempts">3</span></div>
+            </div>
+        </div>
+
+        <table id="sudoku-board"></table>
+
+        <div class="controls">
+            <div>Selecciona un número:</div>
+            <div id="num-buttons"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Notificaciones -->
+<div id="game-over-notification" class="notification hidden">
+    <div class="notification-content">
+        <h2>¡Game Over!</h2>
+        <p>Se acabaron tus intentos.</p>
+        <button id="close-notification">Aceptar</button>
+    </div>
+</div>
+
+<script src="js/sudoku.js"></script>
+</body>
+</html>
