@@ -1,3 +1,5 @@
+import { URL_API_BACKEND_SUDOKU } from './globales.js';
+
 // Variables globales
 let board = [];
 let solution = [];
@@ -145,7 +147,7 @@ function saveGameState(completed = false) {
 
 // Función para obtener el sudoku del backend
 async function fetchSudoku(difficulty) {
-    const response = await fetch(`http://localhost:8081/api/sudoku/daily?difficulty=${difficulty}`);
+    const response = await fetch(`${URL_API_BACKEND_SUDOKU}/daily?difficulty=${difficulty}`);
     if (!response.ok) throw new Error('Error al obtener el sudoku');
     return await response.json();
 }
