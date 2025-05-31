@@ -7,36 +7,58 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="game-container">
-    <h1>Sudoku Diario</h1>
 
-    <div id="difficulty-selector" class="difficulty-selector">
-        <h2>Selecciona dificultad:</h2>
-        <select id="difficulty">
-            <option value="" selected></option>
-            <option value="easy">Fácil</option>
-            <option value="medium">Medio</option>
-            <option value="hard">Difícil</option>
-        </select>
-    </div>
+<!-- <div style="display: flex; align-items: flex-start;"> -->
+<div id="main-flex" style="display: flex; align-items: flex-start; height: 100vh; justify-content: center; position: relative;">
 
-    <div id="game-content" style="display: none;">
-        <div class="game-info">
-            <div class="stats">
-                <div>Tiempo: <span id="time">00:00</span></div>
-                <div>Intentos: <span id="attempts">3</span></div>
+
+    <div class="game-container">
+        <h1>Sudoku Diario</h1>
+
+        <div id="difficulty-selector" class="difficulty-selector">
+            <h2>Selecciona dificultad:</h2>
+            <select id="difficulty">
+                <option value="" selected></option>
+                <option value="easy">Fácil</option>
+                <option value="medium">Medio</option>
+                <option value="hard">Difícil</option>
+            </select>
+        </div>
+
+        <div id="game-content" style="display: none;">
+            <div class="game-info">
+                <div class="stats">
+                    <div>Tiempo: <span id="time">00:00</span></div>
+                    <div>Intentos: <span id="attempts">3</span></div>
+                </div>
+            </div>
+
+            <table id="sudoku-board"></table>
+
+            <div class="controls">
+                <div>Selecciona un número:</div>
+                <div id="num-buttons"></div>
             </div>
         </div>
-
-        <table id="sudoku-board"></table>
-
-        <div class="controls">
-            <div>Selecciona un número:</div>
-            <div id="num-buttons"></div>
-        </div>
     </div>
-</div>
 
+    <!-- <div id="ranking-container" style="margin-left: 40px; display: none;"> -->
+    <div id="ranking-container" style="margin-left: 40px; display: none; position: absolute; right: 5vw; top: 0;">
+        <h3>Ranking Diario</h3>
+        <table id="ranking-table" class="ranking-table">
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th style="text-align: right;">Tiempo</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Aquí se llenan los datos -->
+            </tbody>
+        </table>
+    </div>
+
+</div>
 <!-- Notificaciones -->
 <div id="game-over-notification" class="notification hidden">
     <div class="notification-content">

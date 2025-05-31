@@ -113,7 +113,8 @@ function loadGame(savedGame) {
     updateTimer();
     showGameUI();
 
-    if (gameActive && gameTime > 0) {
+    //if (gameActive && gameTime > 0) {
+    if (gameActive) {
         startTimer();
     }
 
@@ -147,7 +148,7 @@ function saveGameState(completed = false) {
 
 // Función para obtener el sudoku del backend
 async function fetchSudoku(difficulty) {
-    const response = await fetch(`${URL_API_BACKEND_SUDOKU}/daily?difficulty=${difficulty}`);
+    const response = await fetch(`${URL_API_BACKEND_SUDOKU}/sudoku/daily?difficulty=${difficulty}`);
     if (!response.ok) throw new Error('Error al obtener el sudoku');
     return await response.json();
 }
@@ -429,6 +430,53 @@ function changeDifficulty(newDifficulty) {
     selectedDifficulty = newDifficulty;
     initializeGame();
 }
+
+async function obtenerRanking(dificultad) {
+    try {
+        const response = await fetch(`${URL_API_BACKEND_SUDOKU}/ranking/${dificultad}`);
+        if (!response.ok) throw new Error('Error al obtener el ranking');
+        const ranking = await response.json();
+        mostrarRanking(ranking);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+function mostrarRanking(ranking) {
+    const tabla = document.getElementById('ranking-table').querySelector('tbody');
+    tabla.innerHTML = '';
+    ranking.forEach(entry => {
+        const tiempo = formatSecondsToHHMMSS(entry.tiempoSegundos);
+        const tr = document.createElement('tr');
+        const tdNombre = document.createElement('td');
+        const tdTiempo = document.createElement('td');
+        tdNombre.textContent = entry.nombre;
+        tdTiempo.textContent = tiempo;
+        tdTiempo.style.textAlign = 'right';
+        tr.appendChild(tdNombre);
+        tr.appendChild(tdTiempo);
+        tabla.appendChild(tr);
+    });
+}
+
+function formatSecondsToHHMMSS(segundos) {
+    const h = Math.floor(segundos / 3600);
+    const m = Math.floor((segundos % 3600) / 60).toString().padStart(2, '0');
+    const s = (segundos % 60).toString().padStart(2, '0');
+    return h > 0 ? `${h.toString().padStart(2, '0')}:${m}:${s}` : `${m}:${s}`;
+}
+
+// Llama a obtenerRanking cuando se seleccione una dificultad
+document.getElementById('difficulty').addEventListener('change', (event) => {
+    const dificultad = event.target.value;
+    const rankingDiv = document.getElementById('ranking-container');
+    if (dificultad) {
+        rankingDiv.style.display = 'block';
+        obtenerRanking(dificultad);
+    } else {
+        rankingDiv.style.display = 'none';
+    }
+});
 
 // Inicializar verificación diaria
 checkDailyReset();

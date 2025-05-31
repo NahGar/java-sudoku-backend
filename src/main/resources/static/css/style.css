@@ -311,6 +311,24 @@ td.error {
 .disabled-btn .count-badge {
     background-color: #27ae60;
 }
+/*
+#ranking-container {
+  min-width: 200px;
+  background: #f8f8f8;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 8px #0001;
+}
+*/
+
+#ranking-container {
+    max-width: 300px;
+    min-width: 200px;
+}
+
+#ranking-list {
+  padding-left: 20px;
+}
 
 /* Ajuste para móviles */
 @media (max-width: 600px) {
