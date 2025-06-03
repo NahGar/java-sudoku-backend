@@ -148,6 +148,7 @@ function saveGameState(completed = false) {
 
 // Función para obtener el sudoku del backend
 async function fetchSudoku(difficulty) {
+    console.log(`URL:${URL_API_BACKEND_SUDOKU}/sudoku/daily?difficulty=${difficulty}`);
     const response = await fetch(`${URL_API_BACKEND_SUDOKU}/sudoku/daily?difficulty=${difficulty}`);
     if (!response.ok) throw new Error('Error al obtener el sudoku');
     return await response.json();
