@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/ranking")
+@CrossOrigin(origins = {"http://localhost:8081","https://www.peaksw.com"})
 public class RankingController {
 
    private final RankingService rankingService;
