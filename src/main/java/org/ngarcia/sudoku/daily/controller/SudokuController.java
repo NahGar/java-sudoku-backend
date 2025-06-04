@@ -12,7 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/sudoku")
-@CrossOrigin(origins = "http://localhost")
+@CrossOrigin(origins = "http://localhost:*")
 public class SudokuController {
     private final SudokuService sudokuService;
     private static final Logger logger = LoggerFactory.getLogger(SudokuController.class);
