@@ -331,34 +331,38 @@ td.error {
 }
 
 /* Ajuste para móviles */
-@media (max-width: 600px) {
+@media (max-width: 800px) {
+
     #num-buttons button {
         width: 40px;
         height: 40px;
+        font-size: 18px;
     }
     .count-badge {
         width: 16px;
         height: 16px;
         font-size: 10px;
     }
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  .game-info {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  #sudoku-board td {
-    width: 35px;
-    height: 35px;
-    font-size: 18px;
-  }
-
-  #num-buttons button {
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
-  }
+    .game-info {
+        flex-direction: column;
+        gap: 15px;
+    }
+    #sudoku-board td {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+    #main-flex {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    #ranking-container {
+        position: static !important;
+        margin-left: 0 !important;
+        margin-top: 20px !important;
+        right: auto !important;
+        top: auto !important;
+        width: 100%;
+        max-width: 400px;
+    }
 }
