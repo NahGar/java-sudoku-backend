@@ -1,4 +1,4 @@
-import { URL_API_BACKEND_SUDOKU } from './globales.js';
+import { URL_API_BACKEND_SUDOKU, CRED_API_BACKEND_SUDOKU } from './globales.js';
 
 // Variables globales
 let board = [];
@@ -148,8 +148,13 @@ function saveGameState(completed = false) {
 
 // Función para obtener el sudoku del backend
 async function fetchSudoku(difficulty) {
-    console.log(`URL:${URL_API_BACKEND_SUDOKU}/sudoku/daily?difficulty=${difficulty}`);
-    const response = await fetch(`${URL_API_BACKEND_SUDOKU}/sudoku/daily?difficulty=${difficulty}`);
+    //console.log(`URL:${URL_API_BACKEND_SUDOKU}/sudoku/daily?difficulty=${difficulty}`);
+    const response = await fetch(`${URL_API_BACKEND_SUDOKU}/sudoku/daily?difficulty=${difficulty}`, {
+        headers: {
+            'Authorization': `Basic ${CRED_API_BACKEND_SUDOKU}`
+        }
+    });
+    //console.log(`Respuesta del servidor: ${response.status} ${response.statusText}`);
     if (!response.ok) throw new Error('Error al obtener el sudoku');
     return await response.json();
 }
@@ -434,7 +439,13 @@ function changeDifficulty(newDifficulty) {
 
 async function obtenerRanking(dificultad) {
     try {
-        const response = await fetch(`${URL_API_BACKEND_SUDOKU}/ranking/${dificultad}`);
+        //console.log(`URL:${URL_API_BACKEND_SUDOKU}/ranking/${dificultad}`);
+        const response = await fetch(`${URL_API_BACKEND_SUDOKU}/ranking/${dificultad}`, {
+            headers: {
+                'Authorization': `Basic ${CRED_API_BACKEND_SUDOKU}`
+            }
+        });
+        //console.log(`Respuesta del servidor: ${response.status} ${response.statusText}`);
         if (!response.ok) throw new Error('Error al obtener el ranking');
         const ranking = await response.json();
         mostrarRanking(ranking);
